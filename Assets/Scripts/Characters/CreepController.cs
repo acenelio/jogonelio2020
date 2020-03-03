@@ -7,11 +7,16 @@ using UnityEngine.AI;
 public class CreepController : MonoBehaviour
 {
     NavMeshAgent agent;
-    public GameObject finalTarget;
+    GameObject finalTarget;
     
     void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
+        GameObject obj = GameObject.FindWithTag("Finish");
+        if (obj != null)
+        {
+            finalTarget = obj;
+        }
     }
 
     void Start()
