@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using NavGame.Managers;
 
 namespace NavGame.Core
 {
@@ -19,6 +20,7 @@ namespace NavGame.Core
             {
                 cooldown = 1f / stats.attackSpeed;
                 target.TakeDamage(stats.damage);
+                AudioManager.instance.Play("enemy-hit", target.transform.position);
             }
         }
 
