@@ -195,6 +195,7 @@ GameObject:
   - component: {fileID: 4146032458533408232}
   - component: {fileID: 4146032458533408233}
   - component: {fileID: 4146032458533408230}
+  - component: {fileID: 6345248230980994313}
   m_Layer: 0
   m_Name: Creep
   m_TagString: Untagged
@@ -214,6 +215,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4146032457924576505}
+  - {fileID: 3233147034894568452}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -274,3 +276,48 @@ MonoBehaviour:
     damage: 10
     armor: 1
     attackSpeed: 1
+--- !u!114 &6345248230980994313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4146032458533408231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7212d2cc8ddaee4ba33abfc5341d950, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthUIPrefab: {fileID: 3137093737441704586, guid: cac7f491449dc2245820acb02f0d9517,
+    type: 3}
+  healthPosition: {fileID: 3233147034894568452}
+--- !u!1 &7213515837793703363
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3233147034894568452}
+  m_Layer: 0
+  m_Name: HealthPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3233147034894568452
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7213515837793703363}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 2.37, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4146032458533408235}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
