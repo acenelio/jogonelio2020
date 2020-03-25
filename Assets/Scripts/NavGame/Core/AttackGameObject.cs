@@ -5,7 +5,7 @@ using NavGame.Managers;
 
 namespace NavGame.Core
 {
-    public class CombatGameObject : DamageableGameObject
+    public class AttackGameObject : TouchableGameObject
     {
         float cooldown = 0f;
 

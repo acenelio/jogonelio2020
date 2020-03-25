@@ -6,14 +6,13 @@ using NavGame.Core;
 using NavGame.Managers;
 
 [RequireComponent(typeof(NavMeshAgent))]
-public class CreepController : CombatGameObject
+public class CreepController : AttackGameObject
 {
     NavMeshAgent agent;
     DamageableGameObject finalTarget;
     
-    protected override void Awake()
+    void Awake()
     {
-        base.Awake();
         agent = GetComponent<NavMeshAgent>();
         GameObject obj = GameObject.FindWithTag("Finish");
         if (obj != null)
