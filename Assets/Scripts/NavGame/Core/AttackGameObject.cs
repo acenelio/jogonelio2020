@@ -1,17 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using NavGame.Managers;
 
 namespace NavGame.Core
 {
+    [RequireComponent(typeof(UnityEngine.AI.NavMeshAgent))]
     public class AttackGameObject : TouchableGameObject
     {
-        float cooldown = 0f;
-
         public OfenseStats ofenseStats;
 
         public OnAttackHitEvent onAttackHit;
+
+        protected NavMeshAgent agent;
+        float cooldown = 0f;
+
+        protected virtual void Awake()
+        {
+            agent = GetComponent<NavMeshAgent>();
+        }
 
         protected virtual void Update()
         {
