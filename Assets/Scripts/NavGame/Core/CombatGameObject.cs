@@ -9,6 +9,8 @@ namespace NavGame.Core
     {
         float cooldown = 0f;
 
+        public OfenseStats ofenseStats;
+
         public OnAttackHitEvent onAttackHit;
 
         protected virtual void Update()
@@ -20,8 +22,8 @@ namespace NavGame.Core
         {
             if (cooldown <= 0f)
             {
-                cooldown = 1f / stats.attackSpeed;
-                target.TakeDamage(stats.damage);
+                cooldown = 1f / ofenseStats.attackSpeed;
+                target.TakeDamage(ofenseStats.damage);
                 if (onAttackHit != null)
                 {
                     onAttackHit(target.transform.position);
