@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace NavGame.Core
 {
-    public class TouchableGameObject : MonoBehaviour
+    public class TouchableGameObject : BasicGameObject
     {
         public float contactRadius = 0.5f;
 
