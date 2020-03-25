@@ -66,8 +66,18 @@ namespace NavGame.Core
                 if (!enemiesToAttack.Contains(obj))
                 {
                     enemiesToAttack.Add(obj);
+                    obj.onDied += () => { enemiesToAttack.Remove(obj); };
                 }
             }
         }
+
+        void OnTriggerExit(Collider other)
+        {
+            if (enemyMask.Contains(other.gameObject.layer))
+            {
+                DamageableGameObject obj = other.transform.parent.gameObject.GetComponent<DamageableGameObject>();
+                enemiesToAttack.Remove(obj);
+            }
+        }        
     }
 }
