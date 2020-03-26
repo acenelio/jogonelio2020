@@ -5,15 +5,13 @@ using UnityEngine.AI;
 using NavGame.Core;
 using NavGame.Managers;
 
-[RequireComponent(typeof(NavMeshAgent))]
 public class CreepController : AttackGameObject
 {
-    NavMeshAgent agent;
     DamageableGameObject finalTarget;
-    
-    void Awake()
+
+    protected override void Awake()
     {
-        agent = GetComponent<NavMeshAgent>();
+        base.Awake();
         GameObject obj = GameObject.FindWithTag("Finish");
         if (obj != null)
         {
@@ -26,13 +24,12 @@ public class CreepController : AttackGameObject
     protected override void Update()
     {
         base.Update();
-        if (finalTarget == null)
+        if (finalTarget != null)
         {
-            return;
-        }
-        if (IsInTouch(finalTarget))
-        {
-            AttackOnCooldown(finalTarget);
+            if (IsInTouch(finalTarget))
+            {
+                AttackOnCooldown(finalTarget);
+            }
         }
     }
 
