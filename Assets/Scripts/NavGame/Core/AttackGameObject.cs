@@ -12,12 +12,16 @@ namespace NavGame.Core
         public OfenseStats ofenseStats;
 
         public float attackRange = 4f;
+        public float attackDelay = 0.5f;
+        public Transform castTransform;
         public string[] enemyLayers;
 
         [SerializeField]
         protected List<DamageableGameObject> enemiesToAttack = new List<DamageableGameObject>();
 
-        public OnAttackHitEvent onAttackHit;
+        public OnAttackStartEvent onAttackStart;
+        public OnAttackCastEvent onAttackCast;
+        public OnAttackStrikeEvent onAttackStrike;
 
         protected NavMeshAgent agent;
         float cooldown = 0f;
@@ -54,10 +58,34 @@ namespace NavGame.Core
             if (cooldown <= 0f)
             {
                 cooldown = 1f / ofenseStats.attackSpeed;
-                target.TakeDamage(ofenseStats.damage);
-                if (onAttackHit != null)
+                if (onAttackStart != null)
                 {
-                    onAttackHit(target.transform.position);
+                    onAttackStart();
+                }
+                AttackAfterDelay(target, attackDelay);
+            }
+        }
+
+        void AttackAfterDelay(DamageableGameObject target, float delay)
+        {
+            StartCoroutine(AttackAfterDelayCR(target, attackDelay));
+        }
+
+        IEnumerator AttackAfterDelayCR(DamageableGameObject target, float delay)
+        {
+            yield return new WaitForSeconds(delay);
+            if (target != null) // target may have died during delay
+            {
+                if (onAttackCast != null)
+                {
+                    onAttackCast(castTransform.position);
+                }
+
+                target.TakeDamage(ofenseStats.damage);
+
+                if (onAttackStrike != null)
+                {
+                    onAttackStrike(target.damageTransform.position);
                 }
             }
         }
