@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3721923091636745491
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6377474106028669164}
+  m_Layer: 0
+  m_Name: DamagePosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6377474106028669164
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3721923091636745491}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.94, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4146032458533408235}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4146032457545284233
 GameObject:
   m_ObjectHideFlags: 0
@@ -184,6 +214,7 @@ GameObject:
   - component: {fileID: 1263612692061944897}
   - component: {fileID: 2771399471280062555}
   - component: {fileID: 3179777015703362708}
+  - component: {fileID: 114460215269591768}
   m_Layer: 0
   m_Name: Creep
   m_TagString: Untagged
@@ -204,6 +235,7 @@ Transform:
   m_Children:
   - {fileID: 4146032457924576505}
   - {fileID: 4538500421014474376}
+  - {fileID: 6377474106028669164}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -257,10 +289,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2759a1220b150d44c89b4a306923bc7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  angularSpeed: 6
   contactRadius: 0.59
   ofenseStats:
-    damage: 10
+    damage: 5
     attackSpeed: 1
+  attackRange: 4
   enemyLayers:
   - Infantry
   enemiesToAttack: []
@@ -276,11 +310,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58d6f785603f69b4d8d2cecf2ec0f44d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  angularSpeed: 6
   contactRadius: 0.5
   defenseStats:
     maxHealth: 100
     armor: 1
   currentHealth: 0
+  damageTransform: {fileID: 6377474106028669164}
 --- !u!114 &2771399471280062555
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -309,6 +345,23 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 6
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114460215269591768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4146032458533408231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99df4951761e5734cbd37c2553f69acd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageSound: splash-hit2
+  dieSound: splash-death2
+  damageEffects: {fileID: 2180754341959426579, guid: 07be4cb955ba8cb40aeeb7fb351672a4,
+    type: 3}
+  dieEffect: {fileID: 0}
 --- !u!1 &5899978203374113013
 GameObject:
   m_ObjectHideFlags: 0
