@@ -24,12 +24,12 @@ namespace NavGame.Effects
 
         protected virtual void OnDamageTaken(Vector3 point, int amount)
         {
-            PlayEffects(point, damageSound, damageEffects);
+            PlayEffects(point, damageSound, damageEffects, Quaternion.identity);
         }
 
         protected virtual void OnDied()
         {
-            PlayEffects(transform.position, dieSound, dieEffects);
+            PlayEffects(transform.position, dieSound, dieEffects, Quaternion.identity);
         }
     }
 }
