@@ -380,6 +380,7 @@ MonoBehaviour:
   walkableLayer:
     serializedVersion: 2
     m_Bits: 512
+  prefab: {fileID: 8785645684157220562, guid: eb5e4bc7cdae0ff4a946554a723bce2b, type: 3}
 --- !u!1 &534669902
 GameObject:
   m_ObjectHideFlags: 0
