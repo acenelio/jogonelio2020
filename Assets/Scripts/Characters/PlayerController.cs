@@ -10,6 +10,9 @@ public class PlayerController : TouchableGameObject
     NavMeshAgent agent;
     Camera cam;
     public LayerMask walkableLayer;
+    public LayerMask collectibleLayer;
+
+    CollectibleGameObject pickupTarget;
 
     void Awake()
     {
@@ -19,6 +22,12 @@ public class PlayerController : TouchableGameObject
 
     void Update()
     {
+        ProcessInput();
+        UpdateCollect();
+    }
+
+    void ProcessInput()
+    {
         if (Input.GetMouseButtonDown(1))
         {
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
@@ -27,6 +36,28 @@ public class PlayerController : TouchableGameObject
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, walkableLayer))
             {
                 agent.SetDestination(hit.point);
+            }
+
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, collectibleLayer))
+            {
+                pickupTarget = hit.collider.gameObject.GetComponent<CollectibleGameObject>();
+                agent.SetDestination(pickupTarget.transform.position);
+                Debug.Log("Collectible: " + hit.collider.name);
+            }
+            else
+            {
+                pickupTarget = null;
+            }
+        }
+    }
+
+    void UpdateCollect()
+    {
+        if (pickupTarget != null)
+        {
+            if (IsInTouch(pickupTarget))
+            {
+                pickupTarget.Pickup();
             }
         }
     }
