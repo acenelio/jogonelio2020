@@ -42,7 +42,6 @@ public class PlayerController : TouchableGameObject
             {
                 pickupTarget = hit.collider.gameObject.GetComponent<CollectibleGameObject>();
                 agent.SetDestination(pickupTarget.transform.position);
-                Debug.Log("Collectible: " + hit.collider.name);
             }
             else
             {
