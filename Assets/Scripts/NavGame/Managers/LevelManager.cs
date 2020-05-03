@@ -73,7 +73,7 @@ namespace NavGame.Managers
         {
             public int cost;
             public GameObject prefab;
-            public float coolDown = 1f;
+            public float waitTime = 1f;
         }
     }
 }

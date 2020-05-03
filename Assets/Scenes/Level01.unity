@@ -2556,15 +2556,15 @@ MonoBehaviour:
   - cost: 4
     prefab: {fileID: 6675001381996170093, guid: 27794e6eae095ea44a2890ab5b00bff9,
       type: 3}
-    coolDown: 3
+    waitTime: 5
   - cost: 2
     prefab: {fileID: 7987858732191848335, guid: 5a729ad8ecf3640409870d4dbecaab0f,
       type: 3}
-    coolDown: 5
+    waitTime: 2
   - cost: 6
     prefab: {fileID: 3943483223919652742, guid: 388ed4008167c974d9e1d0572b375255,
       type: 3}
-    coolDown: 10
+    waitTime: 10
   badSpawn:
   - {fileID: 158093691}
   badPrefab: {fileID: 4146032458533408231, guid: dd38d4788b9289d4c9c5fb2d2ec62204,
