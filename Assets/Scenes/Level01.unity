@@ -608,7 +608,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9811321, g: 0.29156283, b: 0.29156283, a: 0.3019608}
+  m_Color: {r: 0.8207547, g: 0.8001685, b: 0.2981043, a: 0.54509807}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -618,7 +618,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
-  m_FillAmount: 1
+  m_FillAmount: 0.78
   m_FillClockwise: 0
   m_FillOrigin: 2
   m_UseSpriteMesh: 0
@@ -885,7 +885,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9811321, g: 0.29156283, b: 0.29156283, a: 0.3019608}
+  m_Color: {r: 0.8207547, g: 0.8001685, b: 0.2981043, a: 0.54509807}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -895,7 +895,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
-  m_FillAmount: 1
+  m_FillAmount: 0.78
   m_FillClockwise: 0
   m_FillOrigin: 2
   m_UseSpriteMesh: 0
@@ -2557,14 +2557,17 @@ MonoBehaviour:
     prefab: {fileID: 6675001381996170093, guid: 27794e6eae095ea44a2890ab5b00bff9,
       type: 3}
     waitTime: 5
+    coolDown: 0
   - cost: 2
     prefab: {fileID: 7987858732191848335, guid: 5a729ad8ecf3640409870d4dbecaab0f,
       type: 3}
     waitTime: 2
+    coolDown: 0
   - cost: 6
     prefab: {fileID: 3943483223919652742, guid: 388ed4008167c974d9e1d0572b375255,
       type: 3}
     waitTime: 10
+    coolDown: 0
   badSpawn:
   - {fileID: 158093691}
   badPrefab: {fileID: 4146032458533408231, guid: dd38d4788b9289d4c9c5fb2d2ec62204,
@@ -2816,7 +2819,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9811321, g: 0.29156283, b: 0.29156283, a: 0.3019608}
+  m_Color: {r: 0.8207547, g: 0.8001685, b: 0.2981043, a: 0.54509807}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2826,7 +2829,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
-  m_FillAmount: 1
+  m_FillAmount: 0.78
   m_FillClockwise: 0
   m_FillOrigin: 2
   m_UseSpriteMesh: 0

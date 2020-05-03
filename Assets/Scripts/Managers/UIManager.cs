@@ -16,7 +16,8 @@ public class UIManager : MonoBehaviour
     {
         InitializeUI();
         LevelManager.instance.onActionSelect += OnActionSelect;
-        LevelManager.instance.onActionReset += OnActionReset;
+        LevelManager.instance.onActionCancel += OnActionCancel;
+        LevelManager.instance.onActionCooldownUpdate += OnActionCooldownUpdate;
     }
 
     void InitializeUI()
@@ -31,16 +32,19 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    void OnActionSelect(int code)
+    void OnActionSelect(int actionIndex)
     {
-        actionCDImages[code - 1].fillAmount = 1f;
+        actionCDImages[actionIndex].fillAmount = 1f;
     }
     
-    void OnActionReset()
+    void OnActionCancel(int actionIndex)
     {
-        foreach (Image img in actionCDImages)
-        {
-            img.fillAmount = 0f;
-        }
+        actionCDImages[actionIndex].fillAmount = 0f;
+    }
+
+    void OnActionCooldownUpdate(int actionIndex, float time, float waitTime)
+    {
+        float fillPercent = time / waitTime;
+        actionCDImages[actionIndex].fillAmount = fillPercent;
     }
 }

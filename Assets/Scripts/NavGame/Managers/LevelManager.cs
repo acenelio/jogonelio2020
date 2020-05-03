@@ -13,9 +13,10 @@ namespace NavGame.Managers
         public Action[] actions;
 
         public OnActionSelectEvent onActionSelect;
-        public OnActionResetEvent onActionReset;
+        public OnActionCancelEvent onActionCancel;
+        public OnActionCooldownUpdateEvent onActionCooldownUpdate;
 
-        protected Action selectedAction = null;
+        protected int selectedAction = -1;
 
         protected virtual void Awake()
         {
@@ -34,36 +35,64 @@ namespace NavGame.Managers
             StartCoroutine(SpawnBad());
         }
 
-        public virtual void SelectAction(int code)
+        public virtual void SelectAction(int actionIndex)
         {
-            Action action = actions[code - 1];
-            Debug.Log("Selected: " + action.prefab.name);
-            ResetAction();
-            selectedAction = action;
+            Debug.Log("Selected: " + actions[actionIndex].prefab.name);
+
+            CancelAction();
+
+            selectedAction = actionIndex;
+
             if (onActionSelect != null)
             {
-                onActionSelect(code);
+                onActionSelect(actionIndex);
             }
         }
 
         public virtual void DoAction(Vector3 point)
         {
-            Debug.Log("Do: " + selectedAction.prefab.name);
-            Instantiate(selectedAction.prefab, point, Quaternion.identity);
+            Debug.Log("Do: " + actions[selectedAction].prefab.name);
+            Instantiate(actions[selectedAction].prefab, point, Quaternion.identity);
+            int actionIndex = selectedAction;
+            selectedAction = -1;
+            StartCoroutine(ProcessCoolDown(actionIndex));
         }
 
-        public virtual void ResetAction()
+        IEnumerator ProcessCoolDown(int actionIndex)
         {
-            selectedAction = null;
-            if (onActionReset != null)
+            Action action = actions[actionIndex];
+            action.coolDown = action.waitTime;
+            while (action.coolDown > 0)
             {
-                onActionReset();
+                if (onActionCooldownUpdate != null)
+                {
+                    onActionCooldownUpdate(actionIndex, action.coolDown, action.waitTime);
+                }
+                yield return null;
+                action.coolDown -= Time.deltaTime;
+            }
+            action.coolDown = 0f;
+            if (onActionCooldownUpdate != null)
+            {
+                onActionCooldownUpdate(actionIndex, action.coolDown, action.waitTime);
+            }
+        }
+
+        public virtual void CancelAction()
+        {
+            if (selectedAction != -1) 
+            {
+                if (onActionCancel != null)
+                {
+                    onActionCancel(selectedAction);
+                }
+                selectedAction = -1;
             }
         }
 
         public bool IsActionSelected()
         {
-            return selectedAction != null;
+            return selectedAction != -1;
         }
 
         protected abstract IEnumerator SpawnBad();
@@ -74,6 +103,7 @@ namespace NavGame.Managers
             public int cost;
             public GameObject prefab;
             public float waitTime = 1f;
+            public float coolDown;
         }
     }
 }

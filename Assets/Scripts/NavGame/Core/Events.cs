@@ -11,6 +11,7 @@ namespace NavGame.Core
     public delegate void OnDiedEvent();
 
     // LEVEL EVENTS
-    public delegate void OnActionSelectEvent(int code);
-    public delegate void OnActionResetEvent();
+    public delegate void OnActionSelectEvent(int actionIndex);
+    public delegate void OnActionCancelEvent(int actionIndex);
+    public delegate void OnActionCooldownUpdateEvent(int actionIndex, float time, float waitTime);
 }
