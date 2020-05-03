@@ -15,6 +15,7 @@ namespace NavGame.Managers
         public OnActionSelectEvent onActionSelect;
         public OnActionCancelEvent onActionCancel;
         public OnActionCooldownUpdateEvent onActionCooldownUpdate;
+        public OnErrorEvent onError;
 
         protected int selectedAction = -1;
 
@@ -37,21 +38,29 @@ namespace NavGame.Managers
 
         public virtual void SelectAction(int actionIndex)
         {
-            Debug.Log("Selected: " + actions[actionIndex].prefab.name);
+            try {
+                validateActionCooldown(actionIndex);
 
-            CancelAction();
+                CancelAction();
 
-            selectedAction = actionIndex;
+                selectedAction = actionIndex;
 
-            if (onActionSelect != null)
+                if (onActionSelect != null)
+                {
+                    onActionSelect(actionIndex);
+                }
+            }
+            catch (InvalidOperationException e)
             {
-                onActionSelect(actionIndex);
+                if (onError != null)
+                {
+                    onError(e.Message);
+                }
             }
         }
 
         public virtual void DoAction(Vector3 point)
         {
-            Debug.Log("Do: " + actions[selectedAction].prefab.name);
             Instantiate(actions[selectedAction].prefab, point, Quaternion.identity);
             int actionIndex = selectedAction;
             selectedAction = -1;
@@ -93,6 +102,14 @@ namespace NavGame.Managers
         public bool IsActionSelected()
         {
             return selectedAction != -1;
+        }
+
+        void validateActionCooldown(int actionIndex)
+        {
+            if (actions[actionIndex].coolDown > 0)
+            {
+                throw new InvalidOperationException("Action on cooldown");
+            }
         }
 
         protected abstract IEnumerator SpawnBad();

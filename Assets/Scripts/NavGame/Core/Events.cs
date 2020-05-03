@@ -14,4 +14,5 @@ namespace NavGame.Core
     public delegate void OnActionSelectEvent(int actionIndex);
     public delegate void OnActionCancelEvent(int actionIndex);
     public delegate void OnActionCooldownUpdateEvent(int actionIndex, float time, float waitTime);
+    public delegate void OnErrorEvent(string message);
 }
