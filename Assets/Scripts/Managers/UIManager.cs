@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using NavGame.Managers;
 
 public class UIManager : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         InitializeUI();
+        LevelManager.instance.onActionSelect += OnActionSelect;
+        LevelManager.instance.onActionCancel += OnActionCancel;
     }
 
     void InitializeUI()
@@ -22,5 +25,15 @@ public class UIManager : MonoBehaviour
             cooldownImages[i] = cooldownObjects[i].GetComponent<Image>();
             cooldownImages[i].fillAmount = 0f;
         }
+    }
+
+    void OnActionSelect(int actionIndex)
+    {
+        cooldownImages[actionIndex].fillAmount = 1f;
+    }
+
+    void OnActionCancel(int actionIndex)
+    {
+        cooldownImages[actionIndex].fillAmount = 0f;
     }
 }
