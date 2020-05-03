@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using NavGame.Managers;
 
-public class Level01Manager : MonoBehaviour
+public class Level01Manager : LevelManager
 {
     public Transform[] badSpawn;
     public GameObject badPrefab;
@@ -10,12 +11,7 @@ public class Level01Manager : MonoBehaviour
     public float waitTimeFirstWave = 2f;
     public float waitTimeBetweenWaves = 4f;
 
-    void Start()
-    {
-        StartCoroutine(SpawnBad());
-    }
-
-    IEnumerator SpawnBad()
+    protected override IEnumerator SpawnBad()
     {
         yield return new WaitForSeconds(waitTimeFirstWave);
         for (int i = 0; i < badWaves; i++)

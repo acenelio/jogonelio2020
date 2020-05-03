@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using NavGame.Core;
+using NavGame.Managers;
 
 [RequireComponent(typeof(NavMeshAgent))]
 public class PlayerController : TouchableGameObject
@@ -35,6 +36,8 @@ public class PlayerController : TouchableGameObject
     {
         if (Input.GetMouseButtonDown(1))
         {
+            CancelAction();
+
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
@@ -63,7 +66,7 @@ public class PlayerController : TouchableGameObject
                 actionPoint = hit.point;
                 agent.SetDestination(hit.point);
             }
-        }        
+        }
     }
 
     void UpdateCollect()
@@ -77,6 +80,11 @@ public class PlayerController : TouchableGameObject
         }
     }
 
+    void CancelAction()
+    {
+        actionPoint = Vector3.zero;
+    }
+
     void UpdateAction()
     {
         if (actionPoint != Vector3.zero)
@@ -84,7 +92,7 @@ public class PlayerController : TouchableGameObject
             if (Vector3.Distance(transform.position, actionPoint) <= range)
             {
                 agent.ResetPath();
-                actionPoint = Vector3.zero;
+                CancelAction();
             }
         }
     }
