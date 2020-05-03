@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using NavGame.Managers;
 
 public class UIManager : MonoBehaviour
 {
@@ -11,7 +12,9 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
-        InitializeUI();        
+        InitializeUI();
+        LevelManager.instance.onActionSelect += OnActionSelect;
+        LevelManager.instance.onActionReset += OnActionReset;
     }
 
     void InitializeUI()
@@ -21,6 +24,19 @@ public class UIManager : MonoBehaviour
         {
             actionCDImages[i] = actionCDPanels[i].GetComponent<Image>();
             actionCDImages[i].fillAmount = 0f;
+        }
+    }
+
+    void OnActionSelect(int code)
+    {
+        actionCDImages[code - 1].fillAmount = 1f;
+    }
+    
+    void OnActionReset()
+    {
+        foreach (Image img in actionCDImages)
+        {
+            img.fillAmount = 0f;
         }
     }
 }
