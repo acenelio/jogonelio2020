@@ -56,7 +56,7 @@ public class PlayerController : TouchableGameObject
                 pickupTarget = null;
             }
         }
-        else if (Input.GetMouseButtonDown(0))
+        else if (Input.GetMouseButtonDown(0) && LevelManager.instance.IsActionSelected())
         {
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
@@ -66,7 +66,20 @@ public class PlayerController : TouchableGameObject
                 actionPoint = hit.point;
                 agent.SetDestination(hit.point);
             }
+        }      
+
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            LevelManager.instance.SelectAction(1);
         }
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            LevelManager.instance.SelectAction(2);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            LevelManager.instance.SelectAction(3);
+        }          
     }
 
     void UpdateCollect()
@@ -82,6 +95,7 @@ public class PlayerController : TouchableGameObject
 
     void CancelAction()
     {
+        LevelManager.instance.ResetAction();
         actionPoint = Vector3.zero;
     }
 
@@ -92,6 +106,7 @@ public class PlayerController : TouchableGameObject
             if (Vector3.Distance(transform.position, actionPoint) <= range)
             {
                 agent.ResetPath();
+                LevelManager.instance.DoAction(actionPoint);
                 CancelAction();
             }
         }
