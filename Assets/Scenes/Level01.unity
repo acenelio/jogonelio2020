@@ -2553,7 +2553,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actions:
-  - cost: 2
+  - cost: 4
     prefab: {fileID: 6675001381996170093, guid: 27794e6eae095ea44a2890ab5b00bff9,
       type: 3}
     coolDown: 3
@@ -2561,7 +2561,7 @@ MonoBehaviour:
     prefab: {fileID: 7987858732191848335, guid: 5a729ad8ecf3640409870d4dbecaab0f,
       type: 3}
     coolDown: 5
-  - cost: 2
+  - cost: 6
     prefab: {fileID: 3943483223919652742, guid: 388ed4008167c974d9e1d0572b375255,
       type: 3}
     coolDown: 10
@@ -2588,6 +2588,10 @@ MonoBehaviour:
   - {fileID: 2095869754}
   - {fileID: 549251158}
   - {fileID: 521482804}
+  textActionCosts:
+  - {fileID: 771499225}
+  - {fileID: 1264355926}
+  - {fileID: 768993269}
 --- !u!1 &1914381173
 GameObject:
   m_ObjectHideFlags: 0

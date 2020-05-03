@@ -7,6 +7,8 @@ using NavGame.Managers;
 public class UIManager : MonoBehaviour
 {
     public GameObject[] actionCDPanels;
+    
+    public Text[] textActionCosts;
 
     Image[] actionCDImages;
 
@@ -24,6 +26,8 @@ public class UIManager : MonoBehaviour
         {
             actionCDImages[i] = actionCDPanels[i].GetComponent<Image>();
             actionCDImages[i].fillAmount = 0f;
+
+            textActionCosts[i].text = "(" + LevelManager.instance.actions[i].cost + ")";
         }
     }
 
