@@ -2403,7 +2403,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 58.6, y: 0.00076771}
+  m_AnchoredPosition: {x: 58.600098, y: 0.00076771}
   m_SizeDelta: {x: 117.19, y: 110.44}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1729623977
@@ -2827,6 +2827,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1fad1bc3016a0140972d241f10cbeb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  coinText: {fileID: 755526810}
   cooldownObjects:
   - {fileID: 1927824667}
   - {fileID: 2090536698}
