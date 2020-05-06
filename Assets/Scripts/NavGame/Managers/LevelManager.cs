@@ -12,12 +12,14 @@ namespace NavGame.Managers
         public static LevelManager instance;
         public Action[] actions;
         public string errorSound;
+        public int initialResource = 10;
 
         public OnActionSelectEvent onActionSelect;
         public OnActionCancelEvent onActionCancel;
         public OnActionCooldownUpdateEvent onActionCooldownUpdate;
         public OnResourceUpdateEvent onResourceUpdate;
         public OnReportableErrorEvent onReportableError;
+        public OnWaveUpdateEvent onWaveUpdate;
 
         protected int selectedAction = -1;
         protected LevelData levelData = new LevelData();
@@ -34,8 +36,9 @@ namespace NavGame.Managers
             }
         }
 
-        void Start()
+        protected virtual void Start()
         {
+            AddResource(initialResource);
             StartCoroutine(SpawnBad());
         }
 
