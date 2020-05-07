@@ -23,21 +23,50 @@ public class Level01Manager : LevelManager
 
     protected override IEnumerator SpawnBad()
     {
-        yield return new WaitForSeconds(waitTimeFirstWave);
-        for (int i = 0; i < badWaves; i++)
+        float wait = waitTimeFirstWave;
+        while (wait > 0)
         {
-            for (int j = 0; j < badSpawn.Length; j++)
+            if (onWaveCountdown != null)
             {
-                for (int k = 0; k < monstersPerWave; k++)
-                {
-                    Instantiate(badPrefab, badSpawn[j].position, Quaternion.identity);
-                }
-                if (onWaveUpdate != null)
-                {
-                    onWaveUpdate(badWaves, i + 1);
-                }
+                onWaveCountdown(wait);
             }
-            yield return new WaitForSeconds(waitTimeBetweenWaves);
+            wait -= Time.deltaTime;
+            yield return null;
+        }
+        for (int i = 0; i < badWaves - 1; i++)
+        {
+            SpawnWave(i);
+            wait = waitTimeBetweenWaves;
+            while (wait > 0)
+            {
+                if (onWaveCountdown != null)
+                {
+                    onWaveCountdown(wait);
+                }
+                wait -= Time.deltaTime;
+                yield return null;
+            }
+        }
+        SpawnWave(badWaves - 1);
+        if (onWaveCountdown != null)
+        {
+            onWaveCountdown(0f);
+        }
+    }
+
+    void SpawnWave(int i)
+    {
+        for (int j = 0; j < badSpawn.Length; j++)
+        {
+            for (int k = 0; k < monstersPerWave; k++)
+            {
+                Vector3 offset = new Vector3(Random.Range(-0.1f, 0.1f), 0f, Random.Range(-0.1f, 0.1f));
+                Instantiate(badPrefab, badSpawn[j].position + offset, Quaternion.identity);
+            }
+            if (onWaveUpdate != null)
+            {
+                onWaveUpdate(badWaves, i + 1);
+            }
         }
     }
 }

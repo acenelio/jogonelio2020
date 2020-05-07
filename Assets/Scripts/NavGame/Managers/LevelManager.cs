@@ -20,6 +20,7 @@ namespace NavGame.Managers
         public OnResourceUpdateEvent onResourceUpdate;
         public OnReportableErrorEvent onReportableError;
         public OnWaveUpdateEvent onWaveUpdate;
+        public OnWaveCountdownEvent onWaveCountdown;
 
         protected int selectedAction = -1;
         protected LevelData levelData = new LevelData();
