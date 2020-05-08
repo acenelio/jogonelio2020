@@ -47,7 +47,24 @@ public class Level01Manager : LevelManager
             {
                 onWaveUpdate(badWaves, i + 1);
             }
-            yield return new WaitForSeconds(waitTimeBetweenWaves);
+
+            if (i < badWaves - 1)
+            {
+                wait = waitTimeBetweenWaves;
+                while (wait > 0)
+                {
+                    if (onWaveCountdown != null)
+                    {
+                        onWaveCountdown(wait);
+                    }
+                    wait -= Time.deltaTime;
+                    yield return null;
+                }
+            }
+        }
+        if (onWaveCountdown != null)
+        {
+            onWaveCountdown(0f);
         }
     }
 }
