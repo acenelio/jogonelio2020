@@ -190,7 +190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99df4951761e5734cbd37c2553f69acd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageSound: splash-hit2
+  damageSound: splash-hit1
   dieSound: splash-death2
   damageEffects: {fileID: 2180754341959426579, guid: 07be4cb955ba8cb40aeeb7fb351672a4,
     type: 3}

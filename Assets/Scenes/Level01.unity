@@ -3532,10 +3532,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: Infantry
       objectReference: {fileID: 0}
+    - target: {fileID: 7904610177145043860, guid: 5a729ad8ecf3640409870d4dbecaab0f,
+        type: 3}
+      propertyPath: damageSound
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7904610177145043869, guid: 5a729ad8ecf3640409870d4dbecaab0f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 24.04
+      value: 17.96
       objectReference: {fileID: 0}
     - target: {fileID: 7904610177145043869, guid: 5a729ad8ecf3640409870d4dbecaab0f,
         type: 3}
@@ -3668,7 +3673,7 @@ PrefabInstance:
     - target: {fileID: 3020622750195081130, guid: 27794e6eae095ea44a2890ab5b00bff9,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 11.79
+      value: 32.13
       objectReference: {fileID: 0}
     - target: {fileID: 3020622750195081130, guid: 27794e6eae095ea44a2890ab5b00bff9,
         type: 3}

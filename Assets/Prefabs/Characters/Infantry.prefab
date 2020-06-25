@@ -89,6 +89,7 @@ GameObject:
   - component: {fileID: 8236668911440885293}
   - component: {fileID: 7904610177145043860}
   - component: {fileID: 7904610177145043863}
+  - component: {fileID: 114886372604662976}
   m_Layer: 0
   m_Name: Infantry
   m_TagString: Untagged
@@ -233,11 +234,24 @@ MonoBehaviour:
     damage: 10
     attackSpeed: 1.2
   attackRange: 4
-  attackDelay: 0.5
+  attackDelay: 1.2
   castTransform: {fileID: 0}
   enemyLayers:
   - Creep
   enemiesToAttack: []
+--- !u!114 &114886372604662976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7904610177145043857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1944a551470418947a513290672da0ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smoothness: 0.1
 --- !u!1001 &1433149799722240411
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -245,6 +259,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7904610177145043869}
     m_Modifications:
+    - target: {fileID: 3719267462788473966, guid: e8c42541a72fd0145b412798d26e60ac,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: ee454c1965585a64e99382d3361039ae, type: 2}
     - target: {fileID: 3719267462797724558, guid: e8c42541a72fd0145b412798d26e60ac,
         type: 3}
       propertyPath: m_LocalPosition.x
